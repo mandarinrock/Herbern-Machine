@@ -13,7 +13,6 @@ def encryptSubstitutionCipher(plaintext, key):
 
 def decryptSubstitutionCipher(ciphertext, key):
     plaintext = ""
-    # key += len(ciphertext)
     for c in ciphertext:
         key += 1
         if c.isalpha():
@@ -23,7 +22,6 @@ def decryptSubstitutionCipher(ciphertext, key):
                 plaintext += chr((ord(c) - ord('a') - key) % 26 + ord('a'))
         else:
             plaintext += c
-        # key -= 1
     return plaintext
 
 
@@ -31,8 +29,6 @@ def decryptSubstitutionCipher(ciphertext, key):
 def main():
     plaintext = input("Enter plaintext: ")
     key = int(input("Enter key: "))
-    # print("Plain text is: ", plaintext)
-    # print("Key is: ", key)
     ciphertext = encryptSubstitutionCipher(plaintext, key)
     print("Ciphertext: " + ciphertext)
     decryptedtext = decryptSubstitutionCipher(ciphertext, key)
