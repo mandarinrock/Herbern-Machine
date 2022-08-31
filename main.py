@@ -1,6 +1,7 @@
 def encryptSubstitutionCipher(plaintext, key):
     ciphertext = ""
     for c in plaintext:
+        key += 1
         if c.isalpha():
             if c.isupper():
                 ciphertext += chr((ord(c) - ord('A') + key) % 26 + ord('A'))
@@ -12,7 +13,9 @@ def encryptSubstitutionCipher(plaintext, key):
 
 def decryptSubstitutionCipher(ciphertext, key):
     plaintext = ""
+    # key += len(ciphertext)
     for c in ciphertext:
+        key += 1
         if c.isalpha():
             if c.isupper():
                 plaintext += chr((ord(c) - ord('A') - key) % 26 + ord('A'))
@@ -20,6 +23,7 @@ def decryptSubstitutionCipher(ciphertext, key):
                 plaintext += chr((ord(c) - ord('a') - key) % 26 + ord('a'))
         else:
             plaintext += c
+        # key -= 1
     return plaintext
 
 
